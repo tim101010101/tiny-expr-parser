@@ -20,7 +20,7 @@ mod tests {
 
     #[test]
     fn smoke() {
-        let expr = "1 * 2 + (3 / (4  + (-5)))";
+        let expr = "1*2+(3/(4+(-5)))";
         let ast = build_ast(expr).unwrap();
         assert_eq!(-1, eval(&ast));
         assert_eq!("1 * 2 + 3 / (4 + (-5))", format(&ast));
