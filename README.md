@@ -33,6 +33,8 @@ fn smoke() {
 
 ### Transition Graph
 
+![dfa](https://user-images.githubusercontent.com/76992456/201476075-41e1bcd1-af61-42c8-b09b-2635ca7383ef.jpg)
+
 ### Transition Table
 
 |          | op  | ws  | 0   | 1-9 |
