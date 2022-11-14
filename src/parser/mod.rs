@@ -1,11 +1,11 @@
 use crate::{
     lexer::TokenStream,
-    parser::{grammar::expr, parser_combiner::Parser},
+    parser::{grammar::expr, parser_combinator::Parser},
 };
 
 mod grammar;
 mod node;
-mod parser_combiner;
+mod parser_combinator;
 
 pub use node::Node;
 

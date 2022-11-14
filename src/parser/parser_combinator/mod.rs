@@ -1,6 +1,6 @@
 mod basic_parser;
 mod boxed_parser;
-mod combiner;
+mod combinator;
 mod traits;
 
-pub(crate) use {basic_parser::single_token, combiner::*, traits::Parser};
+pub(crate) use {basic_parser::single_token, combinator::*, traits::Parser};

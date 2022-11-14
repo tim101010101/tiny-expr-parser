@@ -1,6 +1,6 @@
 use crate::lexer::TokenStream;
-use crate::parser::parser_combiner::traits::ParserResult;
-use crate::parser::parser_combiner::Parser;
+use crate::parser::parser_combinator::traits::ParserResult;
+use crate::parser::parser_combinator::Parser;
 
 pub struct BoxedParser<'input, Output> {
     pub(crate) parser: Box<dyn Parser<'input, Output> + 'input>,

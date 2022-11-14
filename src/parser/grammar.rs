@@ -1,7 +1,7 @@
 use crate::{
     parser::{
         node::{Node, Node::*},
-        parser_combiner::{either, single_token, zero_or_more, Parser},
+        parser_combinator::{either, single_token, zero_or_more, Parser},
     },
     syntax_kind::{SyntaxKind, ADD_EXPR, DIV_EXPR, MUL_EXPR, NUM, SUB_EXPR, UNKNOW},
     token,

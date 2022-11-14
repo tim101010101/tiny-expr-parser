@@ -1,6 +1,6 @@
 use crate::lexer::{Token, TokenStream};
-use crate::parser::parser_combiner::combiner::judge;
-use crate::parser::parser_combiner::traits::Parser;
+use crate::parser::parser_combinator::combinator::judge;
+use crate::parser::parser_combinator::traits::Parser;
 use crate::syntax_kind::SyntaxKind;
 
 pub fn atom<'input>() -> impl Parser<'input, Token> {

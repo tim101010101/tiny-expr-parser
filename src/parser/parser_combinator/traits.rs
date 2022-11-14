@@ -1,6 +1,6 @@
 use crate::lexer::TokenStream;
-use crate::parser::parser_combiner::boxed_parser::BoxedParser;
-use crate::parser::parser_combiner::{and_then, either, map};
+use crate::parser::parser_combinator::boxed_parser::BoxedParser;
+use crate::parser::parser_combinator::{and_then, either, map};
 
 /// the result of once parsing
 /// - Ok(Next Input, Current Output)
