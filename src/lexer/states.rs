@@ -16,7 +16,7 @@ pub const NUM: usize = 4;
 pub fn get_terminator_judgement() -> impl Fn(usize) -> bool {
     /// all the termination state
     const END_STATE: [usize; 3] = [OPERATOR, ZERO, NUM];
-    move |state: usize| END_STATE.contains(&state)
+    |state: usize| END_STATE.contains(&state)
 }
 
 /// returns a closure function for state transition as a helper
