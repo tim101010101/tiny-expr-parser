@@ -82,7 +82,7 @@ impl DFA {
 
             // 3. save the current character to the cache, except for whitespace
             if c != ' ' {
-                text_cache.push_str(&c.to_string());
+                text_cache.push(c);
             }
 
             // 4. update the index and previous state

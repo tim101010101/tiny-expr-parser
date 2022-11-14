@@ -1,5 +1,5 @@
 use crate::lexer::TokenStream;
-use crate::parser::parser_combiner::traits::Parser;
+use crate::parser::parser_combinator::traits::Parser;
 
 pub fn map<'input, P, Output, MapFn, NewOutput>(
     parser: P,
