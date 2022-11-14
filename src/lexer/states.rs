@@ -1,8 +1,8 @@
-pub(crate) const ERROR: usize = 0;
-pub(crate) const START: usize = 1;
-pub(crate) const OPERATOR: usize = 2;
-pub(crate) const ZERO: usize = 3;
-pub(crate) const NUM: usize = 4;
+pub const ERROR: usize = 0;
+pub const START: usize = 1;
+pub const OPERATOR: usize = 2;
+pub const ZERO: usize = 3;
+pub const NUM: usize = 4;
 
 /// a closure function will return
 /// which used to determine whether the giving state is a termination state
@@ -13,7 +13,7 @@ pub(crate) const NUM: usize = 4;
 /// assert!(is_terminator(OPERATOR));
 /// assert!(is_terminator(NUM));
 /// ```
-pub(crate) fn get_terminator_judgement() -> impl Fn(usize) -> bool {
+pub fn get_terminator_judgement() -> impl Fn(usize) -> bool {
     /// all the termination state
     const END_STATE: [usize; 3] = [OPERATOR, ZERO, NUM];
     move |state: usize| END_STATE.contains(&state)
@@ -29,7 +29,7 @@ pub(crate) fn get_terminator_judgement() -> impl Fn(usize) -> bool {
 /// state = transition('+', state);
 /// assert_eq!(OPERATOR, state);
 /// ```
-pub(crate) fn get_transition() -> impl Fn(char, usize) -> usize {
+pub fn get_transition() -> impl Fn(char, usize) -> usize {
     /// hardcode state transfer table
     ///
     /// |              | op  | ws  | 0   | 1-9 |

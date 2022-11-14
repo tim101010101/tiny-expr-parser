@@ -29,22 +29,22 @@ pub type TokenStream = Vec<Token>;
 /// | ZERO         | 2   | 1   | E   | E   |
 /// | NUM          | 2   | 1   | 4   | 4   |
 ///
-pub(crate) struct DFA {
+pub struct DFA {
     code: String,
     token_stream: TokenStream,
 }
 
 impl DFA {
-    pub(crate) fn new(code: String) -> Self {
+    pub fn new(code: String) -> Self {
         DFA {
             code,
             token_stream: Vec::new(),
         }
     }
-    pub(crate) fn token_stream(&self) -> TokenStream {
+    pub fn token_stream(&self) -> TokenStream {
         self.token_stream.to_owned()
     }
-    pub(crate) fn run(&mut self) -> Result<(), String> {
+    pub fn run(&mut self) -> Result<(), String> {
         if self.code.len() == 0 {
             return Err("an empty string was received".to_string());
         }
