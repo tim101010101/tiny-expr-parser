@@ -67,3 +67,37 @@ where
         self(input)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::parser::parser_combinator::basic_parser::atom;
+    use crate::parser::parser_combinator::{judge, Parser};
+    use crate::syntax_kind::{NUM, PLUS};
+
+    #[test]
+    fn test_chained_call() {
+        let input = vec![(NUM, "1".to_string())];
+        assert_eq!(
+            Ok((vec![], (PLUS, "+".to_string()))),
+            atom().map(|_| (PLUS, "+".to_string())).parse(input)
+        );
+    }
+
+    #[test]
+    fn att() {
+        let input = vec![
+            (NUM, "1".to_string()),
+            (PLUS, "+".to_string()),
+            (NUM, "2".to_string()),
+        ];
+        assert_eq!(
+            Ok((
+                vec![(PLUS, "+".to_string()), (NUM, "2".to_string())],
+                (PLUS, "1".to_string())
+            )),
+            judge(atom(), |(kind, _)| *kind == NUM)
+                .map(|(_, text)| (PLUS, text))
+                .parse(input)
+        )
+    }
+}
