@@ -46,7 +46,7 @@ impl Visitor<()> for Formatter {
 
         // wrap a expression in a parenthsis
         // while:
-        //    (1). the left expression has a higher priority than the current expression
+        //    (1). the current expression has a higher priority than the right expression
         //    (2). current expression is a negative number
         match right {
             Node::Expr { op: next_op, .. }
