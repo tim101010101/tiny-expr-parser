@@ -23,13 +23,7 @@ pub fn expr() -> impl Parser<'static, Node> {
             either(single_token(token!["+"]), single_token(token!["-"]))
                 .and_then(|(op, _)| term().map(move |right| (op, right))),
         )
-        .map(move |node_list| {
-            let len = node_list.len();
-            match len {
-                0 => left.to_owned(),
-                _ => build_expr_node(left.to_owned(), node_list),
-            }
-        })
+        .map(move |node_list| build_expr_node(left.to_owned(), node_list))
     })
 }
 
@@ -40,13 +34,7 @@ fn term() -> impl Parser<'static, Node> {
             either(single_token(token!["*"]), single_token(token!["/"]))
                 .and_then(|(op, _)| factor().map(move |right| (op, right))),
         )
-        .map(move |node_list| {
-            let len = node_list.len();
-            match len {
-                0 => left.to_owned(),
-                _ => build_expr_node(left.to_owned(), node_list),
-            }
-        })
+        .map(move |node_list| build_expr_node(left.to_owned(), node_list))
     })
 }
 
