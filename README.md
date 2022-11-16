@@ -64,11 +64,13 @@ primitive grammar
 introduce operator precedence
 
 ```text
-<expr>   ::= <expr> ("+" | "-") <add>
-           | <add>
+<expr>   ::= <add> ;
+
+<add>    ::= <add> ("+" | "-") <mul>
+           | <mul>
            ;
 
-<add>    ::= <add> ("*" | "/") <mul> 
+<mul>    ::= <mul> ("*" | "/") <factor> 
            | <factor>
            ;
 
@@ -80,13 +82,15 @@ introduce operator precedence
 eliminate left recursion
 
 ```text
-<expr>   ::= <add> <expr'> ;
-<expr'>  ::= ("+" | "-") <add> <expr'> 
+<expr>   ::= <add> ;
+
+<add>    ::= <mul> <add'> ;
+<add'>   ::= ("+" | "-") <mul> <add'> 
            | <empty>
            ;
 
-<add>    ::= <factor> <add'> ;
-<add'>   ::= ("*" | "/") <mul> <add'> 
+<mul>    ::= <factor> <mul'> ;
+<mul'>   ::= ("*" | "/") <factor> <mul'> 
            | <empty>
            ;
 
@@ -98,9 +102,9 @@ eliminate left recursion
 simplified
 
 ```text
-<expr>   ::= <add> (("+" | "-") <add>)* ;
+<expr>   ::= <mul> (("+" | "-") <mul>)* ;
 
-<add>    ::= <mul> (("*" | "/") <mul>)* ;
+<mul>    ::= <factor> (("*" | "/") <factor>)* ;
 
 <factor> ::= "(" <expr> ")"
            | <literal>
