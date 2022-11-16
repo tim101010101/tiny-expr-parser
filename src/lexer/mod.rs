@@ -1,9 +1,9 @@
 mod dfa;
-mod states;
+mod tokenizer;
 
-use dfa::DFA;
+use tokenizer::Tokenizer;
 
-pub use dfa::{Token, TokenStream};
+pub use tokenizer::{Token, TokenStream};
 
 /// Lexer
 /// convert a character stream to a token stream
@@ -11,9 +11,9 @@ pub use dfa::{Token, TokenStream};
 /// - Ok(TokenStream)
 /// - Err(ErrorMessage)
 pub fn lex(code: &str) -> Result<TokenStream, String> {
-    let mut dfa = DFA::new(code.to_string());
-    match dfa.run() {
-        Ok(_) => Ok(dfa.token_stream()),
+    let mut tokenizer = Tokenizer::new(code.to_string());
+    match tokenizer.run() {
+        Ok(_) => Ok(tokenizer.token_stream()),
         Err(err) => Err(err),
     }
 }
